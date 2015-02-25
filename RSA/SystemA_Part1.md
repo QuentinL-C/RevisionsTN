@@ -16,7 +16,7 @@
 
 * ALU : Opération arithmétique
 * Registres : de données d'adresse, SP, PC
-* Unité de contrôle : Alimentation des données à chaque coup d'horloges
+* Unité de contrôle : Alimentation des données à chaque coup d'horloge
 
 
 ####Le bus :
@@ -33,10 +33,10 @@
 
 ####Hiérarchie de Stockage :
 
-1. registres (gérer par le compilateur)
-2. cache (gérer par le matériel)
+1. Registres (gérer par le compilateur)
+2. Cache (gérer par le matériel)
 3. Mémoire principale (gérer par l'OS)
-4. disque dur (gérer par l'OS)
+4. Disque dur (gérer par l'OS)
 
 ###Périphériques d'E/S
 
@@ -59,24 +59,24 @@ Taille d'un registre :  32 bits
 * ECX : Compteur
 * EDX : overflow
 * ESI et EDI : Source Index et Destination Index
-* EBP : Permet de parcourir le cadre d'une fonction appelée (parms et variables locales)
+* EBP : Permet de parcourir le cadre d'une fonction appelée (params et variables locales)
 * ESP : gestion de la pile
 * Compteur programme
 * Le registre EFLAG : Informe le processeur et le programmeur de l'état d'éxec d'un programme
 
 ####Registres spécialisés :
-* gestion mem virtuelle
-* coprocesseur arithmétique (FPU)
-* Coprocésseure multimédia MMX
+* Gestion mémoire virtuelle
+* Coprocesseur arithmétique (FPU)
+* Coprocesseur multimédia MMX
 * Extension SIMD (fonctionnement avec plusieurs processeurs ou mémoire indépendante)
 
 #####Les registres de segments
 
 Registres spécialisés
 
-*cs (code segment) pointe sur le segment contenant les instructions du programme
-*ss (stack segment) pointe sur le segment contenant la pile du programme (interruption ss-prog)
-*ds (data segment) pointe sur le segment contenant les données globales de statiques
+* cs (code segment) pointe sur le segment contenant les instructions du programme
+* ss (stack segment) pointe sur le segment contenant la pile du programme (interruption ss-prog)
+* ds (data segment) pointe sur le segment contenant les données globales de statiques
 
 3 registres plus généraux :
 
@@ -118,10 +118,10 @@ Evolution :
 
 ###Gestion des processus
 
-* création: exec, fork / terminaison : exit kill
-* suspension : wait, waitpid, sleep, pause
-* synchronisation et communication interprocessus
-* traitement des interblocages
+* Création: exec, fork / terminaison : exit kill
+* Suspension : wait, waitpid, sleep, pause
+* Synchronisation et communication interprocessus
+* Traitement des interblocages
 
 ###Gestion de la mémoire principale
 
@@ -181,14 +181,14 @@ Remarques
 ####Quelle stratégie choisir ?
 
 * Si traitement long -> **Asynchrone**
-* Si qté de données grde -> **DMA**
+* Si grande quantité de données -> **DMA**
 * Si requête simple et rapide -> **Synchrone**
 
 ###Gestion des fichiers
 
 * Vue logique est uniforme du contenu des différents dispositifs de stockage
 
-* Des primitives de création / manipulation de fichier (mkdir...)
+* Des primitives de création / manipulation de fichiers (mkdir...)
 
 ###Système de protection
 
@@ -240,14 +240,14 @@ Inconvénients :
 ###Systèmes à micronoyau
 
 * Le noyau ne contient que les fonctions essentielles (ordonnancement)
-* Les autres services sont fournis pas des programmes systèmes
+* Les autres services sont fournis par des programmes systèmes
 
 #####Avantages :
 
 * Modularité
 * Portabilité
 * Sécurité
-* Configurations
+* Configuration
 
 #####Inconvénients
 
@@ -291,11 +291,11 @@ Le noyau UNIX est découpé en 2 grandes parties qui coopèrent :
 
 Exception sous Linux :
 
-1. Arrivée de l'exception/ interruption
+1. Arrivée de l'exception / interruption
 2. Sauvegarde du contexte actuel
 3. Accès à la table des vecteurs d'interruptions
 4. Exécution du sous-programme en mode noyau
-5. Rétablissement du contexte et reprise de l'ancien programme en mode utilisateur ret_fron_exception()
+5. Rétablissement du contexte et reprise de l'ancien programme en mode utilisateur ret_from_exception()
 
 Remarques :
 
