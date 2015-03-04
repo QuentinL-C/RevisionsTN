@@ -88,16 +88,19 @@ Registres spécialisés
 Rappel sur les modes d'adressage en assembleur (3) :
 
 * Adressage registre
-
-		addl %eax, %edx #ajoute le contenu de EAX et celui dans EDX. Res dans EDX
+```asm
+addl %eax, %edx #ajoute le contenu de EAX et celui dans EDX. Res dans EDX
+```
 
 * Adressage immédiat
-
-		addl $10, %eax #Ajoute 10 à la valeur contenue dans EAX. Res dans EAX
+```asm
+addl $10, %eax #Ajoute 10 à la valeur contenue dans EAX. Res dans EAX
+```
 
 * Adressage indirect
-
-		addl %edx, (%eax) #EAX contient l'adresse de la valeur à ajouter au contenu de EDX. Rés dans la case pointée par EAX
+```asm
+addl %edx, (%eax) #EAX contient l'adresse de la valeur à ajouter au contenu de EDX. Rés dans la case pointée par EAX
+```
 
 ##Rappels sur l'OS (cf cours de Quinson)
 
