@@ -80,7 +80,7 @@
 
 * Différence entre ```fork()``` et ```exec()```
 
-*```fork()```
+* ```fork()```
 * duplique le contexte complet du père
 * retourne le pid du fils au père
 * retourne 0 au fils
