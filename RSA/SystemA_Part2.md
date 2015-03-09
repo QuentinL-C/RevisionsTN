@@ -292,7 +292,7 @@ cf schéma p 91
 
 
 ####Algorithme optimal
-* On connait les séquence de chargement suivantes
+* On connait les séquences de chargement suivantes
 * On remplace celui dont on aura besoin le plus tardivement ou celui dont on n’aura plus du tout besoin
 ####Algorithme LRU
 
