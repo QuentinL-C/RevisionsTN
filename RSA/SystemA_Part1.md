@@ -62,7 +62,7 @@ Taille d'un registre :  32 bits
 * EBP : Permet de parcourir le cadre d'une fonction appelée (params et variables locales)
 * ESP : gestion de la pile
 * Compteur programme
-* Le registre EFLAG : Informe le processeur et le programmeur de l'état d'éxec d'un programme
+* Le registre EFLAG : Informe le processeur et le programmeur de l'état d'éxécution d'un programme
 
 ####Registres spécialisés :
 * Gestion mémoire virtuelle
@@ -179,7 +179,7 @@ Remarques
 * Moteur DMA placé sur le bus E/S ou sur les périphériques
 * Nécéssaire pour multiplexage
 * Peu utilisé
-* Améliroation de l'utilisation du CPU
+* Amélioration de l'utilisation du CPU
 
 ####Quelle stratégie choisir ?
 
@@ -189,7 +189,7 @@ Remarques
 
 ###Gestion des fichiers
 
-* Vue logique est uniforme du contenu des différents dispositifs de stockage
+* Vue logique et uniforme du contenu des différents dispositifs de stockage
 
 * Des primitives de création / manipulation de fichiers (mkdir...)
 
@@ -313,7 +313,7 @@ Interruption sous Linux
 1. Sauvegarde de la valeur de l'IRQ et le contenu de la pile
 2. Envoi d'un ACK au PIC (lui permet de traiter d'autres interruptions)
 3. Exection des routines de traitement d'interruption
-4. invocation de ret_from_intr()
+4. Invocation de ret_from_intr()
 
 ####Les appels système
 
@@ -327,7 +327,7 @@ Interruption sous Linux
 Un système mono-utilisateur monoprogrammé : MS-DOS
 
 Les fonctions suivantes sont assurées par l'OS :
-* LA gestion des E/S V
+* La gestion des E/S V
 * La navigation sur internet F
 * Le partage du matériel en user V
 * Fournir une interface utilisateur F
@@ -335,7 +335,7 @@ Les fonctions suivantes sont assurées par l'OS :
 * Éviter les interférences entre user F
 
 La gestion de fichiers dans un OS inclut
-* La création et supressuin des fichiers V
+* La création et supression des fichiers V
 * Une protection matérielle F (protection logicielle, droit rwx)
 * La possibilité de sauvegarde d'un fichier sur un support permanent V
 * la correspondance entre la vue logique (user) et la vue physique (support de stockage) V
@@ -349,13 +349,13 @@ La gestion des processus inclut :
 * Une JFRE est un exemple d'un système où un processus a plusieurs threads. F
 
 * Le noyau est la partie fondamentale d'un OS, elle implémente les appels système (entre autres) V
-* L'interface utilisateur (textuel ou graphique) est fournie par le noyau F
+* L'interface utilisateur (textuelle ou graphique) est fournie par le noyau F
 inclure trop de fonctionnalités dans un noyau peut se traduire par une moindre flexibilité V
 
 
 * un noyau qui contient la totalité de l'os est un noyau : monolithique
 
-* Un noyau qui se voit attribuer que très peu de fonctions gestion de l'espace d'adressage l'IPC et un ordonnancement basique est un noyau : micro noyau
+* Un noyau qui se voit attribuer que très peu de fonctions gestion de l'espace d'adressage l'IPC et un ordonnancement basique est un micro noyau
 
 Un système monolithique
 * est facile à concevoir et à développer V
@@ -393,4 +393,4 @@ Dans une architecture x86 pour la réalisation dans appels système linux
 
 * une interruption matérielle est : asynchrone
 
-* pour un processus, une interrupt matérielle est : involontaire
+* pour un processus, une interruption matérielle est : involontaire
