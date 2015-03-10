@@ -1,0 +1,70 @@
+Un système mono-utilisateur mono-programmé : MS-DOS
+
+Les fonctions suivantes sont assurées par l'OS :
+LA gestion des E/S V
+La navigation sur internet F
+Le partage du matériel en user V
+Fournir une interface utilisateur F
+Fournir des éditeurs de texte F
+Eviter les interférences entre user F
+
+La gestion de fichiers dans un OS inclut
+La création et supressuin des fichiers V
+Une protection matérielle F (protection logicielle, droit rwx)
+La possibilité de sauvegarde d'un fichier sur un support permanent V
+la correspondance entre la vue loique (user) et la vue physique (support de stockage) V
+
+La gestion des processus inclut :
+la création et treminaison de processus V
+l'ordonnancement des processus V
+la protection intra et inter-processus F
+
+Linux permetr le multi-threading mais ne permet la création d'un seul thread par processus. V
+Une JFRE est un exemple d'un sytème où un processus a plusieurs threads. F
+
+Le noyau est la partie fondamentale d'un OS, elle implémente les aéppels système (entre autres) V
+L'interface utilisateur (textuel ou graphique) est fourni par le noyau F
+inclure trop de fonctionnalités dans un noyau peut se traduire par une moindre flexibilité V
+
+
+UN noyeau qui contient la totalité de l'os est un noyau : monolithique
+
+Un noyau qui se voit attribuer que très peu de fonctions gestion de l'espace d'adressage l'IPC et un ordonancement basique est un noyeau : micro noyau
+
+Un système monolithique
+est facile à concevoir et à dévelloper V
+utilise inefficacement la mémoire V
+s'execute rapidement V
+permet plus de sécurité F
+
+SIMD stands for : Single Instruction Stream Multiple Data Stream
+
+
+Une architecture MIMD est plus facile à réaliser qu'une architecture SIMD : Faux
+
+Une E/S asynch est non bloquante V
+Une ES synchrone engendre une faible utilisation de l'UC V
+Une interruption est déclenchée à la fin d'une E/S sycnhrone F
+Une interruption est déclenchée à la fin d'une E/S asynchrone V
+Une interruption est déclenchée à la fin d'une E/S DMA V
+
+Un temps de traitement long par le périphérique : E/S asynchrone
+Une grande quantité de données à transférer: DMA
+une requète simple : ES synchrone
+
+une invocation d'une système appel système
+une réaction à un event externe : interruption
+prise en chaarge d'une erreur lors de l'exécution d'une instruction une exeception
+
+Dans une architecture x86 pour la réalisation dans appels système linux
+utilise une interruption logicielle
+Les parametres sont passés le registre
+Le nombre d'appels système n'est pas limité à 6
+
+UN appel système est : asynchrone
+
+pour un processys un appel système est : volontaire
+
+une interruption matérielle est : asynchrone
+
+pour un processus une interrupt matérielle est : involontaire
