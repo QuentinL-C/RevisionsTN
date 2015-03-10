@@ -12,7 +12,7 @@
 	* le code
 
 * En mode noyau, un processus manipule :
-	* les zones de données 
+	* les zones de données
 	* les zones de code
 	* une **pile noyau**
 
@@ -51,17 +51,17 @@
 * table des processus
 	* en permanence en mémoire
 	* contient des infos sur tous les processus (même ceux en dehors de la mémoire)
-* Strucutre utilisateur 
+* Strucutre utilisateur
 	* Fait partie de la mémoire virtuelle
 	* Contient des infos qui ne sont que nécessaires lors de l'exécution du processus
 	(cf schéma page 131)
 
 ##Contexte d'un processus
-	* Contexte utilisateur : Zones texte + données + pile utilisateur
-	* Contexte matériel : Registres + pointeurs au niveau du processus
-	* Contexte système : défini globalement par la structure utilisateur
-		* Structure du noyau
-		* Pile noyau
+* Contexte utilisateur : Zones texte + données + pile utilisateur
+* Contexte matériel : Registres + pointeurs au niveau du processus
+* Contexte système : défini globalement par la structure utilisateur
+	* Structure du noyau
+	* Pile noyau
 
 ###Changement de contexte
 * Conssite en la sauvegarde du contexte d'un processus + restaurer celui d'un autre
@@ -80,12 +80,13 @@
 
 * Différence entre ```fork()``` et ```exec()```
 
+
 * ```fork()```
 * duplique le contexte complet du père
 * retourne le pid du fils au père
 * retourne 0 au fils
 
-Problème à résoudre 
+Problème à résoudre
 
 * Allocation des ressources pour le processus fils:
 	* système : table des processus + pid
@@ -94,7 +95,7 @@ Problème à résoudre
 * Lancement du nouveau processus (double retour)
 
 
-##Implentation des processus Linux 2.6
+##Implantation des processus Linux 2.6
 
 ###Descripteur du processus
 
@@ -104,11 +105,11 @@ Le descripteur ```task_struct``` contient toutes les informations relatives à u
 	* TASK_RUNNING (prêt à être exécuté ou en cours d'exécution)
 	* TASK_INTERRUPTIBLE (processus suspendu en attendant qu'une condition soit réalisée)
 	* TASK_STOPPED (processus arrêté à cause d'un signal SIGSTOP)
-	* TASK_ZOMBIE (l'exécution du processus est terminée, mais son père n'a pas encore fait appel à wait()) 
+	* TASK_ZOMBIE (l'exécution du processus est terminée, mais son père n'a pas encore fait appel à wait())
 
-Lightweight processes = processus légers 
-	* = 1 thread
-	* groupe de threads = ensemble de processus légers qui implante  un même application multithreadée
-		* partagent l'espace d'adressage
-		* Agissent comme un tout vis-à-vis du système
-		* chacun à son pid mais un seul pid de groupe
+Lightweight processes = processus légers
+* = 1 thread
+* groupe de threads = ensemble de processus légers qui implante  un même application multithreadée
+	* partagent l'espace d'adressage
+	* Agissent comme un tout vis-à-vis du système
+	* chacun à son pid mais un seul pid de groupe
