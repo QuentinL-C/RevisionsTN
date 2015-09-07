@@ -1,5 +1,5 @@
 # RevisionsTN
->Auteurs : Quentin LAPORTE-CHABASSE Jean-Philippe EISENBARTH
+>Auteurs : Quentin LAPORTE-CHABASSE Jean-Philippe EISENBARTH et Rémi EVEN
 
 Dépôt contenant des fiches de révisions pour les élèves de TELECOM Nancy
 
