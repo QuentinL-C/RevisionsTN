@@ -1,0 +1,347 @@
+\documentclass{scrartcl}
+
+\newcommand{\tutoFileName}{awesomefile.txt}
+
+\RequirePackage[francais]{babel}
+\RequirePackage[utf8]{inputenc}
+
+\RequirePackage[a4paper]{geometry}
+\geometry{top=2cm, bottom=2cm,right=2cm,left=2.0cm}
+
+\usepackage{exsheets}[2014/09/14] % v0.16 or newer
+
+\SetupExSheets{
+  headings = runin,
+  headings-format = \large\bfseries\sffamily,
+  subtitle-format = \large\bfseries\sffamily,
+  counter-format = qu: ,
+  solution/print = true % uncomment for tutors
+}
+
+\usepackage{listings}
+\usepackage{courier}
+
+\lstset{
+	basicstyle=\small\ttfamily,
+	escapechar=-
+}
+
+\title{TP d'initiation au Shell}
+
+\begin{document}
+
+\maketitle
+
+Il existe plusieurs Shells, les plus connus étant \textit{sh}, \textit{bash}, \textit{zsh}, \ldots
+Si les différences entre eux sont mineures, certaines questions de ce TP requièrent  \textit{bash}. Vous pouvez le lancer avec la commande \lstinline|bash| dans un shell quelconque; vous pourrez quitter à la fin du TP avec \lstinline|exit|.
+
+\section{Manipulation de répertoires de fichiers}
+
+Lorsque vous ouvrez une session, votre répertoire de travail est votre dossier personnel.
+Vous avez vu en cours que la commande \lstinline|pwd| (\emph{Print Working Directory}) vous permet d’afficher le chemin absolu du répertoire actuel.
+
+\begin{question}[name=Q.]
+	Vérifiez que votre répertoire de travail est bien votre \lstinline|home| personnel (il est nommé selon votre identifiant).
+\end{question}
+\begin{solution}
+	Commande \lstinline|pwd|.
+\end{solution}
+
+\begin{question}[name=Q.]
+	La commande \lstinline|ls| permet de lister le contenu d’un répertoire. Les options suivantes sont couramment utilisées :
+	\begin{description}
+		\item \lstinline|-a| :
+		affiche les dossiers cachés
+		\item \lstinline|-l| :
+		affiche les détails (type, droits, propriétaire, taille etc...)
+	\end{description}
+	Il est possible de grouper les options. Ainsi, la commande \lstinline|ls -a -l| peut être écrite \lstinline|ls -al|.
+	Listez le contenu de votre \lstinline|home|, avec puis sans les détails.
+\end{question}
+\begin{solution}
+	\lstinline|ls| $\sim$ \lstinline|&& ls -al | $\sim$.
+\end{solution}
+
+\begin{question}[name=Q.]
+	Affichez la liste des fichiers contenus dans le dépôt du groupe 1A (c'est un sous-dossier de \lstinline|/home|), sans vous y déplacer. Proposez deux solutions, l'une avec un chemin absolu et l'autre avec un chemin relatif.
+\end{question}
+\begin{solution}
+	%TODO
+\end{solution}
+
+\begin{question}[name=Q.]
+	Dans votre dossier \lstinline|home| personnel, créez un répertoire nommé \lstinline|TP_UNIX| à l'aide de la commande \lstinline|mkdir| (\emph{Make Directory}).
+\end{question}
+\begin{solution}
+	\lstinline|cd | $\sim$ \lstinline| && mkdir TP_UNIX|
+\end{solution}
+
+\begin{question}[name=Q.]
+	La commande \lstinline|cd| (\emph{Change Directory}) permet de se déplacer dans l'arborescence. Elle prend en paramètre un chemin, absolu ou relatif. Ce chemin peut être auto-complété à l'aide de la touche \lstinline|TAB|. Entrez dans le répertoire créé à la question précédente.
+\end{question}
+\begin{solution}
+	\lstinline|cd TP_UNIX|
+	\clearpage
+\end{solution}
+
+\section{Manipulation du contenu d'un fichier}
+
+\begin{question}[name=Q.]
+	Pour créer un fichier (vide), on peut utiliser la commande \lstinline|touch|. Créez un fichier nommé \emph{\tutoFileName}.
+\end{question}
+\begin{solution}
+	\lstinline|touch| \tutoFileName % Why can't I use my commands inside lstinline, or use block listing inside solution, or even use exsheets-listings? This really isn't cool.
+\end{solution}
+
+\begin{question}[name=Q.]
+	La commande \lstinline|echo| permet d'écrire sur la sortie standard. Essayez-la avec le paramètre \lstinline|coucou|.
+\end{question}
+\begin{solution}
+	\lstinline|echo coucou|
+\end{solution}
+
+\begin{question}[name=Q.]
+	On peut également rediriger la sortie de \lstinline|echo| vers un fichier, ce qui permet d'écrire dans celui-ci. On utilise pour cela un chevron $>$. Cela écrase le contenu du fichier; si l'on désire simplement ajouter du contenu à la fin du fichier, on utilise deux chevrons, $>>$. Écrivez \emph{coucou} dans \emph{\tutoFileName}.
+\end{question}
+\begin{solution}
+	\lstinline|echo coucou > | \tutoFileName
+\end{solution}
+
+\begin{question}[name=Q.]
+	Vérifier le résultat de la question précédente en utilisant la commande \lstinline|cat|.
+\end{question}
+\begin{solution}
+	\lstinline|cat| \tutoFileName
+\end{solution}
+
+\begin{question}[name=Q.]
+	\lstinline|echo| n'est pas la seule commande dont la sortie peut être redirigée. Écrivez le manuel de la commande \lstinline|cat|, dans \emph{\tutoFileName}. 
+\end{question}
+\begin{solution}
+	\lstinline|man cat > | \tutoFileName
+\end{solution}
+
+\begin{question}[name=Q.]
+	Pour des fichiers dépassant une certaine taille, la commande \lstinline|cat| est peu pratique. Vérifiez le résultat de la question précédente à l'aide de \lstinline|less|. 
+\end{question}
+\begin{solution}
+	\lstinline|less | \tutoFileName
+	\clearpage
+\end{solution}
+
+Il existe également des éditeurs de textes accessibles en console; on peut citer \textit{nano}, \textit{vim}, ou \textit{emacs}.
+
+\section{Manipulation de fichiers}
+
+\begin{question}[name=Q.]
+	À l'aide de la commande \lstinline|cp| (\emph{copy}), copiez \emph{\tutoFileName} dans votre \lstinline|home|. Vérifiez le résultat avec \lstinline|ls|.
+\end{question}
+\begin{solution}
+	\lstinline|cp | \tutoFileName ~ \lstinline| ../copied.txt && ls ..|
+\end{solution}
+
+\begin{question}[name=Q.]
+	La commande \lstinline|mv| (\emph{move}) permet de déplacer/renommer des fichiers. Renommez le fichier que vous venez de copier dans votre \lstinline|home|, sans oublier de consulter le manuel.
+\end{question}
+\begin{solution}
+	\lstinline|mv ../|\tutoFileName \lstinline| |  \lstinline|../newName.txt|
+\end{solution}
+
+\begin{question}[name=Q.]
+	Supprimez maintenant ce fichier, à l'aide de \lstinline|rm| (\emph{remove}).
+\end{question}
+\begin{solution}
+	\lstinline|rm ../newName.txt|
+\end{solution}
+
+\begin{question}[name=Q.]
+	Qu'aurait-il fallu changer dans les questions précédentes si l'on avait manipulé un dossier (vide/non vide) ?
+\end{question}
+\begin{solution}
+	\begin{description}
+		\item \lstinline|cp| : rajouter \lstinline|-r|
+		\item \lstinline|mv| : rien
+		\item \lstinline|rm| : rajouter \lstinline|-r|, ou utiliser \lstinline|rmdir| si vide
+	\end{description}
+\end{solution}
+
+\section{Gestion des droits d'accès}
+
+Pour gérer l'aspect multi-utilisateurs, les fichiers/dossiers Unix disposent de droits d'accès :
+
+\begin{description}
+	\item[r] lecture
+	\item[w] écriture
+	\item[x] exécution
+\end{description}
+
+Ceux-ci peuvent être réglés différemment suivant 3 niveaux :
+
+\begin{description}
+	\item[u] l'utilisateur
+	\item[g] le groupe, sauf l'utilisateur
+	\item[o] tout le monde, sauf le groupe et l'utilisateur
+\end{description}
+
+Pour un dossier, le droit d’exécution correspond au droit d'accès, tandis que les droits de lecture et d'écriture correspondent à l'accès à la liste des fichiers s'y trouvant et à la création de nouveaux fichiers.
+
+Pour visualiser ces droits, on utilise la commande \lstinline|ls -l|. On obtient alors un résultat de la forme de la figure \ref{fig:ls_result}. On s'intéresse alors à la première colonne, à lire suivant les informations de la figure \ref{fig:permissions}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=10cm]{figures/ls_result}
+  \caption{Résultat de \lstinline|ls -l|}
+  \label{fig:ls_result}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=10cm]{figures/permissions}
+  \caption{Légende des droits d'accès}
+  \label{fig:permissions}
+\end{figure}
+
+Pour changer les droits d'un fichier/dossier, on utilise la commande \lstinline|chmod|.
+
+\begin{question}[name=Q.]
+	Créez un fichier nommé \emph{test.sh}, et écrivez-y la commande \lstinline|echo coucou| (par la méthode de votre choix). \emph{test.sh} est alors un script shell, potentiellement exécutable, qui écrira "coucou" à chaque fois qu'il sera lancé (par la commande \lstinline|./test.sh|).
+	Notez les droits actuels du fichier. Avez-vous ceux nécessaires pour l’exécuter ?
+\end{question}
+\begin{solution}
+	\lstinline|echo "echo coucou" > test.sh|\\
+	\lstinline|ls -l|\\
+	\lstinline|-rw-r--r--|\\
+	Non.
+\end{solution}
+
+\begin{question}[name=Q.]
+	Il existe plusieurs manières d'utiliser \lstinline|chmod|. Entrez la commande suivante :
+
+	\lstinline|chmod u+x test.sh|. Que remarquez-vous ? Consultez le manuel et expliquez \lstinline|u+x|.
+\end{question}
+\begin{solution}
+	L'utilisateur peut maintenant exécuter \lstinline|test.sh|.
+\end{solution}
+
+\begin{question}[name=Q.]
+	Vous avez sans doute remarqué dans le manuel la deuxième manière d'utiliser \lstinline|chmod|. Il s'agit de l'écriture \emph{octale} des droits d'accès. Entrez la commande \lstinline|chmod 777 test.sh|, puis visualisez les nouveaux droits de \lstinline|test.sh|. Que remarquez-vous ?
+\end{question}
+\begin{solution}
+	Tout le monde a tous les droits.
+	\clearpage
+\end{solution}
+
+\section{Gestion des processus}
+
+\begin{question}[name=Q.]
+	Que fait la commande \lstinline|ps| ? Essayez-la, ainsi qu'avec l'option \lstinline|-e|.
+\end{question}
+\begin{solution}
+	\lstinline|ps| liste les processus en cours.
+\end{solution}
+
+Lorsque l'on lance une commande, le shell ne redonne pas la main avant que celle-ci ne se soit terminée. On peut cependant terminer ou arrêter momentanément l’exécution d'une commande, à l'aide des raccourcis suivant : \textbf{Ctrl-c} (fin) et \textbf{Ctrl-z} (pause). Le shell rend alors la main.
+
+Si le processus a été mis en pause, il est alors possible de relancer son exécution, en premier plan (on reperd alors la main) ou en arrière plan (on garde alors la main). On utilise pour cela les commandes \lstinline|bg| (\emph{background}) et \lstinline|fg| (\emph{foreground}).
+
+\begin{question}[name=Q.]
+	Lancez la commande \lstinline|cat| (sans aucun argument). Que remarquez-vous ? Mettez le processus en pause, puis relancez-le avant de le terminer, à l'aide des commandes/raccourcis vus plus haut.
+\end{question}
+\begin{solution}
+	\lstinline|cat|, puis \textbf{Ctrl-z}, puis \lstinline|fg|, puis \textbf{Ctrl-c}.
+\end{solution}
+
+Il est également possible de lancer une commande directement en arrière plan, en la terminant avec le signe \lstinline|&|.
+
+On peut utiliser la commande \lstinline|jobs| pour savoir quels processus sont actuellement en arrière plan.
+
+\clearpage
+
+\section{Bonus : Les $|$ (pipes)}
+
+Les $|$ servent à chaîner les entrées/sorties de différents processus. Ainsi, en écrivant \lstinline-proc1 | proc2-, la sortie de \lstinline|proc1| est chaînée à l'entrée de \lstinline|proc2|.
+
+\begin{question}[name=Q.]
+	Il est courant d'utiliser les pipes en conjonction avec la commande \lstinline|grep|. A quoi sert-elle? Obtenez la liste des processus dont le nom contient la lettre \lstinline|x|.
+\end{question}
+\begin{solution}
+	\lstinline$ps -e | grep x$.
+\end{solution}
+
+\section{Bonus : Retrouver des commandes précédemment écrites}
+
+\begin{question}[name=Q.]
+	On peut vite être limité par l'utilisation des touches flèches haut et bas pour retrouver d'anciennes commandes. La commande \lstinline|history| affiche (presque) tout l'historique des commandes que vous avez rentrées. Utilisez la conjointement avec \lstinline|grep|, pour trouver toutes les commandes que vous avez rentrées utilisant \lstinline|ls|.
+\end{question}
+\begin{solution}
+	\lstinline$history | grep ls$.
+\end{solution}
+
+\begin{question}[name=Q.]
+	\lstinline|\!\!| correspond à la dernière commande entrée. Utilisez-le avec \lstinline|echo| pour afficher cette dernière (sans l'exécuter). \\
+	\textit{NB.} : cela est utile lors d'un oubli de \lstinline|sudo|, qui permet de lancer une commande en tant qu'administrateur, avec  \lstinline|sudo \!\!|.
+\end{question}
+\begin{solution}
+	\lstinline|echo \!\!|.
+\end{solution}
+
+\begin{question}[name=Q.]
+	La plupart des shell (dont \textit{bash}) proposent aussi le raccourci \textbf{Ctrl-r}. Utilisez-le pour retrouver votre dernière commande \lstinline|cat|. Lors de votre recherche, si vous voulez accéder à des résultats plus anciens, vous pouvez retaper \textbf{Ctrl-r}.
+\end{question}
+\begin{solution}
+	\textbf{Ctrl-r}, puis \lstinline|cat|
+\end{solution}
+
+\section{Bonus : Les variables d'environnement}
+
+\begin{question}[name=Q.]
+Il est possible de définir des variables en dehors des scripts, à l'aide des commandes \lstinline|export| ou \lstinline|setenv|. Définissez une variable nommée \lstinline|hello|, et donnez-lui la valeur \lstinline|"Hello World!"|. Comment afficher cette variable ? Quelle est la durée de vie et la portée des variables définies ainsi ?
+\end{question}
+\begin{solution}
+	\lstinline|export hello="Hello World!"| ou \lstinline|setenv hello "Hello World!"|.
+	Affichage avec \lstinline|echo $hello|.\\
+	Durée de vie : la session du Shell\\
+	Portée : le terminal courant
+\end{solution}
+
+\begin{question}[name=Q.]
+	Certaines variables sont prédéfinies. C'est le cas de \lstinline|OLDPWD|. Que vaut-elle ? Déplacez-vous. Que remarquez-vous ? \\
+	\textit{NB.} : cette variable est ensuite surtout utilisée lorsque l'on tape \lstinline|cd -|.
+\end{question}
+\begin{solution}
+	Répertoire de travail précédent.
+\end{solution}
+
+\section{Bonus : Divers}
+
+\begin{question}[name=Q.]
+	Le symbole $\sim$ est synonyme de \lstinline|home|. Utilisez-le pour lister le contenu de votre \lstinline|home|, à partir de la racine (\lstinline|/|). \\
+	\textit{NB.} : \lstinline|cd | $\sim$ est donc équivalent à \lstinline|cd| (sans arguments).
+\end{question}
+\begin{solution}
+	\lstinline|ls| $\sim$
+\end{solution}
+
+\begin{question}[name=Q.]
+	Quelle est la différence entre la commande \lstinline|clear| et le raccourci \textbf{Ctrl-l} ?
+\end{question}
+\begin{solution}
+	Difficile à expliquer, l'effet est le même mais \textbf{Ctrl-l} est plus pratique quand on remonte souvent vers les commandes précédentes car il n'introduit pas de gros vides.
+\end{solution}
+
+\begin{question}[name=Q.]
+	À l'aide de la commande \lstinline|which|, retrouvez le chemin de la commande \lstinline|file|. À quoi sert cette dernière ?
+\end{question}
+\begin{solution}
+	\lstinline|which file| \\
+	\lstinline|file| permet de connaître le type d'un fichier, (un peu) plus sûrement qu'à partir de son extension.
+\end{solution}
+
+\begin{question}[name=Q.]
+	Utilisez la commande \lstinline|find| pour retrouver tous les fichiers \lstinline|jar| contenus dans le dépôt 1A.
+\end{question}
+\begin{solution}
+	\lstinline|find /home/depot/1A -name *.jar|
+\end{solution}
+
+\end{document}
